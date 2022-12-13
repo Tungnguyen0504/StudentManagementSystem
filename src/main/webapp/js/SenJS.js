@@ -135,7 +135,7 @@ function order() {
     const liked = document.querySelector("#orderne").value;
     const likeda = document.querySelector("#ordernea").value;
     $.ajax({
-        url: "/g1/SearchSubject",
+        url: "/SearchSubject",
         type: "get",
         data: {
             likes: like,

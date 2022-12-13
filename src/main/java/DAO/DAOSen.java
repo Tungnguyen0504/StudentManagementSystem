@@ -976,6 +976,29 @@ public class DAOSen extends ConnectJDBC {
         }
     }
 
+    public Class_s getClassById(String id) {
+        String sql = "SELECT * FROM class where class_id = " + id;
+        ResultSet rs = getData(sql);
+        try {
+            while (rs.next()) {
+                int i = 0;
+                Class_s c = new Class_s();
+                c.setId(rs.getInt(++i));
+                c.setClassCode(rs.getString(++i));
+                c.setTrainerId(rs.getString(++i));
+                c.setSubjectId(rs.getString(++i));
+                c.setClassYear(rs.getString(++i));
+                c.setClassTerm(rs.getString(++i));
+                c.setBlock5Class(rs.getString(++i));
+                c.setStatus(rs.getInt(++i));
+                return c;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
         DAOSen dao = new DAOSen();
 //        List<Class_s> lst = dao.Class();

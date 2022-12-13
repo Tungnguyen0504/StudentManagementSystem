@@ -35,7 +35,7 @@ public class DAOMilestone extends ConnectJDBC {
 
     public List<Milestone> viewAllMilestone(String pt) {
         List<Milestone> list = new ArrayList<>();
-        String sql = "SELECT ms.milestone_id, iteration_name, class_code,ms.from_date,ms.to_date,ms.status, ms.interation_id,ms.class_id, milestone_name FROM milestone ms\n"
+        String sql = "SELECT ms.milestone_id, iteration_name, class_code,ms.from_date,ms.to_date,ms.status, ms.interation_id,ms.class_id FROM milestone ms\n"
                 + "inner join iteration ite\n"
                 + "on ms.interation_id = ite.iteration_id\n"
                 + "inner join class cl\n"
@@ -44,7 +44,19 @@ public class DAOMilestone extends ConnectJDBC {
         ResultSet rs = getData(sql);
         try {
             while (rs.next()) {
-                list.add(new Milestone(rs.getInt(1), rs.getInt(7), rs.getInt(8), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(3), rs.getString(2), rs.getString(9)));
+                Milestone milestone = new Milestone();
+
+                int i = 0;
+                milestone.setMilestone_id(rs.getInt(++i));
+                milestone.setIterationName(rs.getString(++i));
+                milestone.setClassCode(rs.getString(++i));
+                milestone.setFrom_date(rs.getString(++i));
+                milestone.setTo_date(rs.getString(++i));
+                milestone.setStatus(rs.getInt(++i));
+                milestone.setInteration_id(rs.getInt(++i));
+                milestone.setClass_id(rs.getInt(++i));
+
+                list.add(milestone);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -164,7 +176,7 @@ public class DAOMilestone extends ConnectJDBC {
     }
 
     public Milestone viewMilestoneByMilIdAndIteIdAndClassId(String classId, String mileId, String iteId) {
-        String sql = "SELECT ms.milestone_id, iteration_name, class_code,ms.from_date,ms.to_date,ms.status,ms.interation_id,ms.class_id, milestone_name FROM milestone ms\n"
+        String sql = "SELECT ms.milestone_id, iteration_name, class_code,ms.from_date,ms.to_date,ms.status,ms.interation_id,ms.class_id FROM milestone ms\n"
                 + "inner join iteration ite\n"
                 + "on ms.interation_id = ite.iteration_id\n"
                 + "inner join class cl\n"
@@ -173,7 +185,7 @@ public class DAOMilestone extends ConnectJDBC {
         ResultSet rs = getData(sql);
         try {
             if (rs.next()) {
-                return new Milestone(rs.getInt(1), rs.getInt(7), rs.getInt(8), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(3), rs.getString(2), rs.getString(9));
+                return new Milestone(rs.getInt(1), rs.getInt(7), rs.getInt(8), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(3), rs.getString(2));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -240,7 +252,7 @@ public class DAOMilestone extends ConnectJDBC {
 
     public List<Milestone> ListMilestoneByClass(String classId) {
         List<Milestone> list = new ArrayList<>();
-        String sql = "SELECT ms.milestone_id, iteration_name, class_code,ms.from_date,ms.to_date,ms.status, ms.interation_id,ms.class_id, milestone_name FROM milestone ms\n"
+        String sql = "SELECT ms.milestone_id, iteration_name, class_code,ms.from_date,ms.to_date,ms.status, ms.interation_id,ms.class_id FROM milestone ms\n"
                 + "inner join iteration ite\n"
                 + "on ms.interation_id = ite.iteration_id\n"
                 + "inner join class cl\n"
@@ -249,7 +261,19 @@ public class DAOMilestone extends ConnectJDBC {
         ResultSet rs = getData(sql);
         try {
             while (rs.next()) {
-                list.add(new Milestone(rs.getInt(1), rs.getInt(7), rs.getInt(8), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(3), rs.getString(2), rs.getString(9)));
+                Milestone milestone = new Milestone();
+
+                int i = 0;
+                milestone.setMilestone_id(rs.getInt(++i));
+                milestone.setIterationName(rs.getString(++i));
+                milestone.setClassCode(rs.getString(++i));
+                milestone.setFrom_date(rs.getString(++i));
+                milestone.setTo_date(rs.getString(++i));
+                milestone.setStatus(rs.getInt(++i));
+                milestone.setInteration_id(rs.getInt(++i));
+                milestone.setClass_id(rs.getInt(++i));
+
+                list.add(milestone);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

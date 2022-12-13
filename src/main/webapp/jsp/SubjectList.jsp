@@ -1,8 +1,3 @@
-<%-- 
-    Document   : Home
-    Created on : May 20, 2022, 12:55:19 PM
-    Author     : asus
---%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -63,10 +58,10 @@
                                     <a href="Home"> Dashboard </a>
                                     <p> / </p>
                                     <a href="ClassUser"> List all Subject </a>
-                                </div>                           
+                                </div>
                             </div>
                             <span style="margin-top: 100px">${arr}</span>
-                        <input style="margin-top: 4rem" oninput="searchByName(this)" class="form-control form-control-user" name="txt" type="text" value="${txtSearch}" 
+                        <input style="margin-top: 4rem" oninput="searchByName(this)" class="form-control form-control-user" name="txt" type="text" value="${txtSearch}"
                                placeholder="Search mã môn hoặc tên môn học ở đây" id="hintForm">
                         <ul style="justify-content: space-between;"><ul style="justify-content: flex-start;">
                                 <li>
@@ -115,11 +110,11 @@
 
                             </form>
                         </div>
-                        <c:if test="${Loged.role_id == 4}"> 
+                        <c:if test="${Loged.role_id == 4}">
                             <input id="het" type="hidden" value="">
                             <ul id="slide">
                                 <span class="spn">${count1} Subject(s) found</span>
-                                <input oninput="searchByName(this)" class="search form-control form-control-user" name="txt" type="hidden" value="" 
+                                <input oninput="searchByName(this)" class="search form-control form-control-user" name="txt" type="hidden" value=""
                                        placeholder="Search mã môn hoặc tên môn học ở đây">
                                 <c:forEach var="o" items="${list}">
                                     <li>
@@ -130,17 +125,17 @@
                                                 <div class="aa">
                                                     <a class="a" style="margin-right: 15px" href="UpdateSubject?id=${o.subject_id}"><ion-icon name="refresh"></ion-icon>Update</a>
                                                 <a class="a" href="ShowAllClass?go=showBySubject&subjectId=${o.subject_id}">Go to your course  <ion-icon style="margin-left: 3px" name="arrow-forward"></ion-icon></a>
-                                            </div>   
+                                            </div>
                                         </div>
                                     </li>
                                 </c:forEach>
                             </ul>
                         </c:if>
-                        <c:if test="${Loged.role_id != 4}"> 
+                        <c:if test="${Loged.role_id != 4}">
                             <input id="het" type="hidden" value="">
                             <ul id="slide">
                                 <span class="spn">${count} Subject(s) found</span>
-                                <input oninput="searchByName(this)" class="search form-control form-control-user" name="txt" type="hidden" value="" 
+                                <input oninput="searchByName(this)" class="search form-control form-control-user" name="txt" type="hidden" value=""
                                        placeholder="Search mã môn hoặc tên môn học ở đây">
                                 <c:forEach var="o" items="${list2}">
                                     <li>

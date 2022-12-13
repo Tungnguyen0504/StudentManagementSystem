@@ -1,14 +1,4 @@
-<%-- 
-    Document   : ListMileByClass
-    Created on : Jul 15, 2022, 9:37:39 PM
-    Author     : Admin
---%>
-
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -38,6 +28,7 @@
 
     <body id="page-top">
 
+    <jsp:useBean id="DAOSen" scope="page" class="DAO.DAOSen"/>
 
         <!-- Page Wrapper -->
         <div id="wrapper">
@@ -80,6 +71,7 @@
                                             <tr>
                                                 <th>Milestone Name</th>
                                                 <th>Iteration Name</th>                                                                                        
+                                                <th>Class</th>
                                                 <th>From Date</th>
                                                 <th>To Date</th>
                                                 <th>Status</th>
@@ -93,6 +85,7 @@
                                                 <tr>
                                                     <td>${o.milestone_name}</td>    
                                                     <td>${o.iterationName}</td>
+                                                    <td>${DAOSen.getClassById(o.class_id).classCode}</td>
                                                     <td>${o.from_date}</td>
                                                     <td>${o.to_date}</td>
                                                     <td>
